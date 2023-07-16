@@ -1,6 +1,6 @@
-# Agenda de Contactos (Address Book)
+# Agenda de Contactos (Contact Book)
 
-Esto es un CRUD Backend de una Agenda de Contactos del curso __Codo a Codo__. El programa esta escrito en Java, usando IDE de Eclipse EE, hace uso de la librerias: Servlet y JPA con MySQL. Ademas de Maven para la gestion de dependencias. 
+Esto es un CRUD de una Agenda de Contactos del curso fullstack java de __Codo a Codo__
 
 ### Video de demostracion
 #### https://youtu.be/yMy1QgJx0RA
@@ -34,5 +34,5 @@ Esto es un CRUD Backend de una Agenda de Contactos del curso __Codo a Codo__. El
 ### Captura
 
 <p align="center">
-  <img src="https://repository-images.githubusercontent.com/666574814/6e39d40f-0363-46f5-971a-8dc390832668" alt="Vista de listado">
+  <img src="https://repository-images.githubusercontent.com/666574814/276e56cd-d902-4b6e-aa1c-f7cc1d713260" alt="Vista del programa">
 </p>
