@@ -1,9 +1,21 @@
 # Agenda de Contactos (Address Book)
 
-Esto es un CRUD de una Agenda de Contactos para el  curso de __Codo a Codo - Ciudad de Bs.As__. El programa es en Java, usando IDE de Eclipse EE, hace uso de la libreria Servlet y JPA con MySQL. Ademas de Maven como gestion de dependencias. Quisiera merjorar la interfaz y agregar cosas pero no tengo tiempo.
+Esto es un CRUD Backend de una Agenda de Contactos del curso __Codo a Codo__. El programa esta escrito en Java, usando IDE de Eclipse EE, hace uso de la librerias: Servlet y JPA con MySQL. Ademas de Maven para la gestion de dependencias. 
+
+Quisiera merjorar la interfaz pero por cuestiones de tiempo ya debo tener algo entregable.
 
 ## Video de demostracion
-[Youtube](https://youtu.be/L05o73azJVA)
+#### https://youtu.be/L05o73azJVA
+
+## Tecnologias utilizadas
+- Java 17
+- Eclipse EE
+- Maven
+- Servlet
+- Tomcat server
+- JPA con Mysql
+- JSP
+- Git 
 
 ## Con este CRUD puede:
 - Crear un contacto
