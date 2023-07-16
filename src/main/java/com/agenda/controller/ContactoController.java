@@ -40,9 +40,11 @@ public class ContactoController extends HttpServlet {
 		
 	private void routeAction(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		final String accion=(String) req.getParameter("accion");
+		
 		if(accion != null) {
 			req.setAttribute("action", accion);
 		}
+		
 		switch(accion) {
 		case "editar":
 			editar(req,resp);
@@ -60,7 +62,7 @@ public class ContactoController extends HttpServlet {
 			buscar(req,resp);
 			break;
 		default:
-			resp.sendRedirect("/agenda/home.html");
+			resp.sendRedirect("/agenda/home.jsp");
 		}
 	}	 
 	
@@ -166,13 +168,10 @@ public class ContactoController extends HttpServlet {
 			
 		getServletContext().getRequestDispatcher(jsp).forward(req, resp);
 	}
-	public void eliminar(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-		final String method=req.getMethod();
+	public void eliminar(HttpServletRequest req, HttpServletResponse resp) throws Exception { 
 		List<String> messages=new ArrayList<String>();
 		Contacto contacto=null;
-		if(!method.equals("GET")) {
-			return;
-		}
+		
 		final Long id=Long.parseLong( req.getParameter("id"));
 		try {
 			contacto=contactoDao.getById(id);
@@ -202,5 +201,5 @@ public class ContactoController extends HttpServlet {
 			req.setAttribute("messages", messages);
 		}
 		getServletContext().getRequestDispatcher("/WEB-INF/views/listado.jsp").forward(req, resp);
-	}	
+	}
 }

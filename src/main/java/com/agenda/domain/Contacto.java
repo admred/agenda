@@ -41,12 +41,11 @@ public class Contacto implements java.io.Serializable {
 		if(apellido != null && !apellido.isBlank()) {
 			this.apellido=apellido;
 		}
-		if(telefono != null && !telefono.isBlank()) {
-			this.telefono=telefono;
-		}
-		if(email != null && !email.isBlank() && email.contains("@") ) {
-			this.email=email;
-		}
+		
+		this.telefono=telefono;
+		
+		this.email=email;
+		
 	}
 	public Long getId() {
 		return id;

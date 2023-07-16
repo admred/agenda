@@ -10,12 +10,18 @@ import com.agenda.domain.Contacto;
 
 public class TestContactoDao {
 	static Contacto[] contactos=new Contacto[] {
-			new Contacto(0l,"Ramon Jorge","Veliz","(255) 2334456","bolo322@example.com"),
-			new Contacto(0l,"Roberto","Contado Fino","  ","rcf4324@example.com"),
-			new Contacto(0l,"Maria Erica","Lopez","34-334123","danielaeuge@example.com"),
-			new Contacto(0l,"Roxana Eugenia","Gomez Rangel","",null),
-			new Contacto(0l,"Liliana","Caloventor","2000",null)
-	};
+			new Contacto(0l,"Ruth","Quiroga","1781289039","codo965792002@example.com"),
+			new Contacto(0l,"Tamara","Rogani","1368158572","codo1374591471@example.com"),
+			new Contacto(0l,"AlÍ","Pedernera","1589760862","codo854268527@example.com"),
+			new Contacto(0l,"Yanet","Ahumada","1370294641","codo356529191@example.com"),
+			new Contacto(0l,"Isabel","Rodriguez","1514006841","codo2065787249@example.com"),
+			new Contacto(0l,"Laura","Andrada","1757979712","codo1593133406@example.com"),
+			new Contacto(0l,"Melisa","Silva","1786080070","codo1740719330@example.com"),
+			new Contacto(0l,"RamÓn","Silva","404766829","codo140661936@example.com"),
+			new Contacto(0l,"LucÍa","Miranda","117909939","codo38572220@example.com"),
+			new Contacto(0l,"Carolina","Rolón","496406851","codo1486068511@example.com")
+		};
+	
 	static IContactoDao contactoDao= new ContactoDAOMysqlImpl();
 	
 	public static void main(String[] args) throws Exception {
