@@ -2,10 +2,9 @@
 
 Esto es un CRUD Backend de una Agenda de Contactos del curso __Codo a Codo__. El programa esta escrito en Java, usando IDE de Eclipse EE, hace uso de la librerias: Servlet y JPA con MySQL. Ademas de Maven para la gestion de dependencias. 
 
-Quisiera merjorar la interfaz pero por cuestiones de tiempo ya debo tener algo entregable.
-
 ### Video de demostracion
-#### https://youtu.be/L05o73azJVA
+#### https://youtu.be/yMy1QgJx0RA
+
 
 ### Tecnologias utilizadas
 - Java 17
@@ -13,7 +12,7 @@ Quisiera merjorar la interfaz pero por cuestiones de tiempo ya debo tener algo e
 - Maven
 - Servlet
 - Tomcat server
-- JPA
+- JPA (con MySQL)
 - Mysql
 - JSP
 - Git 
@@ -29,6 +28,5 @@ Quisiera merjorar la interfaz pero por cuestiones de tiempo ya debo tener algo e
 - Listar contactos
 
 ## Falta:
-- Diseño en CSS/Bootstrap
 - Programar __Grupos__
 - Detalles menores
