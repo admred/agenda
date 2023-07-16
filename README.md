@@ -27,6 +27,12 @@ Esto es un CRUD Backend de una Agenda de Contactos del curso __Codo a Codo__. El
 - Buscar un contacto
 - Listar contactos
 
-## Falta:
+### Falta:
 - Programar __Grupos__
 - Detalles menores
+
+### Captura
+
+<p align="center">
+  <img src="https://repository-images.githubusercontent.com/666574814/6e39d40f-0363-46f5-971a-8dc390832668" alt="Vista de listado">
+</p>
