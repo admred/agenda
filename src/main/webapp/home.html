@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Menu principal</h1>
+<p>Contacto:</p>
+<ul>
+<li><a href="/agenda/contacto?accion=listado">Listado</a></li>
+<li><a href="/agenda/contacto?accion=crear">Crear</a></li>
+<li>
+	<form action="/agenda/contacto" method="GET">
+		<input type="hidden" name="accion" value="buscar">
+		<input type="text" name="keyword">
+		<input type="submit" value="Buscar">
+	</form>
+</li>
+</ul>
+</body>
+</html>
