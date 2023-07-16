@@ -4,26 +4,27 @@ Esto es un CRUD Backend de una Agenda de Contactos del curso __Codo a Codo__. El
 
 Quisiera merjorar la interfaz pero por cuestiones de tiempo ya debo tener algo entregable.
 
-## Video de demostracion
+### Video de demostracion
 #### https://youtu.be/L05o73azJVA
 
-## Tecnologias utilizadas
+### Tecnologias utilizadas
 - Java 17
 - Eclipse EE
 - Maven
 - Servlet
 - Tomcat server
-- JPA con Mysql
+- JPA
+- Mysql
 - JSP
 - Git 
 
-## Con este CRUD puede:
+### Con este CRUD puede:
 - Crear un contacto
 - Agregar un contacto
 - Eliminar un contacto
 - Modificar un contacto
 
-## Ademas puede:
+### Ademas puede:
 - Buscar un contacto
 - Listar contactos
 
