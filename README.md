@@ -15,7 +15,10 @@ Esto es un CRUD de una Agenda de Contactos del curso fullstack java de __Codo a 
 - JPA (con MySQL)
 - Mysql
 - JSP
-- Git 
+- Git
+- HTML
+- CSS
+- BOOTSTRAP
 
 ### Con este CRUD puede:
 - Crear un contacto
