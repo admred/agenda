@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.agenda.dao.impl.ContactoDAOMysqlImpl;
-import com.agenda.dao.IContactoDao;
+import com.agenda.dao.ContactoDao;
 import com.agenda.domain.Contacto;
 
 
@@ -22,7 +22,7 @@ public class TestContactoDao {
 			new Contacto(0l,"Carolina","Rolón","496406851","codo1486068511@example.com")
 		};
 	
-	static IContactoDao contactoDao= new ContactoDAOMysqlImpl();
+	static ContactoDao contactoDao= new ContactoDAOMysqlImpl();
 	
 	public static void main(String[] args) throws Exception {
 		

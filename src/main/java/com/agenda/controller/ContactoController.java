@@ -2,13 +2,15 @@ package com.agenda.controller;
 
 import java.io.IOException;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.agenda.dao.impl.ContactoDAOMysqlImpl;
 import com.agenda.domain.Contacto;
+import com.agenda.utils.Form;
+import com.agenda.utils.Field;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -145,6 +147,12 @@ public class ContactoController extends HttpServlet {
 				throw new Exception();
 			}
 			req.setAttribute("contacto", contacto);
+			req.setAttribute("form",new Form("editar","POST",List.<Field>of(
+					new Field("text","Nombre","nombre",contacto.getNombre(),true),
+					new Field("text","Apellido","apellido",contacto.getApellido(),true),
+					new Field("text","Telefono","telefono",contacto.getTelefono(),false),
+					new Field("email","Email","email",contacto.getEmail(),false)
+			)));
 		}catch(Exception ex) {
 			// handle error
 			ex.printStackTrace();

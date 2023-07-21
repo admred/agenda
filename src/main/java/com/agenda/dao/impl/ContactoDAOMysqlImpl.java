@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import com.agenda.domain.Contacto;
 import com.agenda.factory.ConnectionFactory;
 
-import com.agenda.dao.IContactoDao;
+import com.agenda.dao.ContactoDao;
 
-public class ContactoDAOMysqlImpl implements IContactoDao {
+public class ContactoDAOMysqlImpl implements ContactoDao {
 	
 	@Override
 	public Contacto getById(Long id) throws SQLException {
