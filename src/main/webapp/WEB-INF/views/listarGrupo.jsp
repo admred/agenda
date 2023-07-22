@@ -1,9 +1,9 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List, com.agenda.domain.Contacto"%>
+<%@page import="java.util.List, com.agenda.domain.Grupo"%>
 
 <%
-	List<Contacto> listado=(List<Contacto>)request.getAttribute("listado");
+	List<Grupo> listado=(List<Grupo>)request.getAttribute("listado");
 %>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://unpkg.com/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-	<title>Listado de contactos</title>
+	<title>Listado de grupos</title>
 </head>
 
 <body>
@@ -31,16 +31,16 @@
 							<a class="nav-link" href="<%=request.getContextPath()%>">Inicio</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link active" href="<%=request.getContextPath()%>/ListarContacto">Listado</a>
+							<a class="nav-link active" href="<%=request.getContextPath()%>/ListarGrupo">Listado</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<%=request.getContextPath()%>/CrearContacto">Crear</a>
+							<a class="nav-link" href="<%=request.getContextPath()%>/CrearGrupo">Crear</a>
 						</li>
 
 					</ul>
 					<div class="d-flex w-75 justify-content-end">
-						<form class="d-flex" action="<%=request.getContextPath()%>/BuscarContacto" method="GET">
-							<input name="keyword" class="form-control me-2" type="search" placeholder="Buscar Contacto"
+						<form class="d-flex" action="<%=request.getContextPath()%>/BuscarGrupo" method="GET">
+							<input name="keyword" class="form-control me-2" type="search" placeholder="Buscar Grupo"
 								autocomplete="off">
 							<button class="btn btn-outline-success" type="submit">Buscar</button>
 						</form>
@@ -52,7 +52,7 @@
 
 	<main>
 		<div class="container bg-light mt-5">
-			<h3>Listado de contactos</h3>
+			<h3>Listado de grupos</h3>
 <%
 	if( listado != null && listado.size() > 0 ) { 
 %>		
@@ -61,30 +61,26 @@
 						<tr>
 					  		<th>Id</th>
 							<th>Nombre</th>
-							<th>Apellido</th>
-							<th>Telefono</th>
-							<th>Email</th>
+							<th>Descripcion</th>
 							<th>Accion</th>
 					   </tr>
 					</thead>
 					<tbody>
-					<% for(Contacto contacto: listado ) { %>
+					<% for(Grupo grupo: listado ) { %>
 						<tr>
-							<th scope="row"><%=contacto.getId()%></th>
-							<td><%=contacto.getNombre()%></td>
-							<td><%=contacto.getApellido()%></td>
-							<td><%=contacto.getTelefono()%></td>
-							<td><%=contacto.getEmail()%></td>
+							<th scope="row"><%=grupo.getId()%></th>
+							<td><%=grupo.getNombre()%></td>
+							<td><%=grupo.getDescripcion()%></td>
 							<td>
 								<div class="btn-group btn-group-sm" role="group" aria-label="Acciones">
 									<a class="btn btn-info" 
 							      	   role="button" 
-							      	   href="<%=request.getContextPath()%>/ActualizarContacto?id=<%=contacto.getId()%>">
+							      	   href="<%=request.getContextPath()%>/ActualizarGrupo?id=<%=grupo.getId()%>">
 							      	   Editar
 							      	</a>
 									<a class="btn btn-danger"
 										role="button"  
-										href="<%=request.getContextPath()%>/EliminarContacto?id=<%=contacto.getId()%>">
+										href="<%=request.getContextPath()%>/EliminarGrupo?id=<%=grupo.getId()%>">
 									  Eliminar
 									</a>
 								</div>

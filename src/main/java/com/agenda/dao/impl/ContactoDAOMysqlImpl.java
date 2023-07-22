@@ -25,7 +25,7 @@ public class ContactoDAOMysqlImpl implements ContactoDao {
 		ResultSet rs=pStmt.executeQuery();
 		
 		if (!rs.isBeforeFirst() ) {    
-		    return null;
+		    throw new SQLException("Not Found");
 		} 
 		rs.next();
 		contacto=new Contacto(

@@ -1,9 +1,9 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List, com.agenda.domain.Contacto" %>
+<%@page import="java.util.List, com.agenda.domain.Grupo" %>
 
 <%
-	Contacto contacto=(Contacto)request.getAttribute("contacto");
+	Grupo grupo=(Grupo)request.getAttribute("grupo");
 %>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,7 +12,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://unpkg.com/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-	<title>Actualizar contacto</title>
+	<title>Actualizar grupo</title>
 </head>
 
 <body>
@@ -31,16 +31,16 @@
 							<a class="nav-link" href="<%=request.getContextPath()%>">Inicio</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<%=request.getContextPath()%>/ListarContacto">Listado</a>
+							<a class="nav-link" href="<%=request.getContextPath()%>/ListarGrupo">Listado</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<%=request.getContextPath()%>/CrearContacto">Crear</a>
+							<a class="nav-link" href="<%=request.getContextPath()%>/CrearGrupo">Crear</a>
 						</li>
 
 					</ul>
 					<div class="d-flex w-75 justify-content-end">
-						<form class="d-flex" action="<%=request.getContextPath()%>/BuscarContacto" method="GET">
-							<input name="keyword" class="form-control me-2" type="search" placeholder="Buscar Contacto"
+						<form class="d-flex" action="<%=request.getContextPath()%>/BuscarGrupo" method="GET">
+							<input name="keyword" class="form-control me-2" type="search" placeholder="Buscar Grupo"
 								autocomplete="off">
 							<button class="btn btn-outline-success" type="submit">Buscar</button>
 						</form>
@@ -52,29 +52,19 @@
 
 	<main>
 		<div class="container bg-light mt-5">
-			<h3>Actualizar contacto</h3>
-			<form action="<%=request.getContextPath()%>/ActualizarContacto" method="POST">
-				<input type="hidden" name="id" value="<%=contacto.getId()%>">
+			<h3>Actualizar grupo</h3>
+			<form action="<%=request.getContextPath()%>/ActualizarGrupo" method="POST">
+				<input type="hidden" name="id" value="<%=grupo.getId()%>">
 				<div class="mb-3">
 					<label class="form-label" for="nombre">Nombre</label>
-					<input type="text" name="nombre" class="form-control" value="<%=contacto.getNombre()%>" required>
+					<input type="text" name="nombre" class="form-control" value="<%=grupo.getNombre()%>" required>
 				</div>
 
 				<div class="mb-3">
-					<label class="form-label" for="apellido">Apellido</label>
-					<input type="text" name="apellido" class="form-control" value="<%=contacto.getApellido()%>" required>
+					<label class="form-label" for="descripcion">Descripcion</label>
+					<input type="text" name="descripcion" class="form-control" value="<%=grupo.getDescripcion()%>">
 				</div>
-
-				<div class="mb-3">
-					<label class="form-label" for="telefono">Telefono</label>
-					<input type="text" name="telefono" class="form-control" value="<%=contacto.getTelefono()%>">
-				</div>
-
-				<div class="mb-3">
-					<label class="form-label" for="email">Email</label>
-					<input type="email" name="email" class="form-control" value="<%=contacto.getEmail()%>">
-				</div>
-
+				
 				<input type="submit" value="Enviar" class="btn btn-primary">
 				<a href="#" onclick="history.back()" role="button" class="btn btn-secondary">Volver</a>
 			</form>

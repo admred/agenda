@@ -15,7 +15,7 @@ CREATE TABLE contactos(
 
 CREATE TABLE grupos(
     id          INT PRIMARY KEY AUTO_INCREMENT,
-    nombre      VARCHAR(30) NOT NULL,
+    nombre      VARCHAR(20) NOT NULL UNIQUE,
     descr       VARCHAR(1000)
 );
 

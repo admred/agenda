@@ -1,10 +1,5 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List, com.agenda.domain.Contacto" %>
-
-<%
-	Contacto contacto=(Contacto)request.getAttribute("contacto");
-%>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,12 +7,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://unpkg.com/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-	<title>Actualizar contacto</title>
+	<title>Crear contacto</title>
 </head>
 
 <body>
 	<div class="container bg-ligth">
-	
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<%=request.getContextPath()%>">Agenda</a>
@@ -34,7 +28,7 @@
 							<a class="nav-link" href="<%=request.getContextPath()%>/ListarContacto">Listado</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<%=request.getContextPath()%>/CrearContacto">Crear</a>
+							<a class="nav-link active" href="<%=request.getContextPath()%>/CrearContacto">Crear</a>
 						</li>
 
 					</ul>
@@ -51,28 +45,27 @@
 	</div>
 
 	<main>
-		<div class="container bg-light mt-5">
-			<h3>Actualizar contacto</h3>
-			<form action="<%=request.getContextPath()%>/ActualizarContacto" method="POST">
-				<input type="hidden" name="id" value="<%=contacto.getId()%>">
+		<div class="container bg-light mt-5">		
+			<form action="<%=request.getContextPath()%>/CrearContacto" method="POST">
+
 				<div class="mb-3">
 					<label class="form-label" for="nombre">Nombre</label>
-					<input type="text" name="nombre" class="form-control" value="<%=contacto.getNombre()%>" required>
+					<input type="text" name="nombre" class="form-control" required autocomplete="off">
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" for="apellido">Apellido</label>
-					<input type="text" name="apellido" class="form-control" value="<%=contacto.getApellido()%>" required>
+					<input type="text" name="apellido" class="form-control" required autocomplete="off">
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" for="telefono">Telefono</label>
-					<input type="text" name="telefono" class="form-control" value="<%=contacto.getTelefono()%>">
+					<input type="text" name="telefono" class="form-control" autocomplete="off">
 				</div>
 
 				<div class="mb-3">
 					<label class="form-label" for="email">Email</label>
-					<input type="email" name="email" class="form-control" value="<%=contacto.getEmail()%>">
+					<input type="email" name="email" class="form-control" autocomplete="off">
 				</div>
 
 				<input type="submit" value="Enviar" class="btn btn-primary">

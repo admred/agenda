@@ -23,34 +23,9 @@ public class Contacto implements java.io.Serializable {
 		this.email=email;
 	}
 	
-	/* Metodos */
-	public void update(Contacto contacto) {
-		//final Long id=contacto.getId();
-		final String nombre=contacto.getNombre();
-		final String apellido=contacto.getApellido();
-		final String telefono=contacto.getTelefono();
-		final String email=contacto.getEmail();
-		/*
-		if(id != null && id != 0 ) {
-			this.id=id;
-		}
-		*/
-		if(nombre != null && !nombre.isBlank()) {
-			this.nombre=nombre;
-		}
-		if(apellido != null && !apellido.isBlank()) {
-			this.apellido=apellido;
-		}
-		
-		this.telefono=telefono;
-		
-		this.email=email;
-		
-	}
 	public Long getId() {
 		return id;
 	}
-	/* Getters y Setters */
 	public String getNombre() {
 		return nombre;
 	}

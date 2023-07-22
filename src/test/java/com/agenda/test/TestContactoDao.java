@@ -34,6 +34,7 @@ public class TestContactoDao {
 		testDelete();
 		testCreate();
 		testSearchEmpty();
+		System.out.println("Paso los tests existosamente!");
 	}
 	
 	
@@ -71,8 +72,13 @@ public class TestContactoDao {
 		for(Contacto c:listado) {
 			Long id=c.getId();
 			contactoDao.delete(id);
-			Contacto checked=contactoDao.getById(id);
-			assert(checked == null);
+			try {
+				contactoDao.getById(id);
+			}catch(Exception e) {
+				// OK
+				return;
+			}
+			throw new AssertionError("Fallo testDelete()");
 		}
 	}
 	

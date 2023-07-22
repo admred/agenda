@@ -8,26 +8,26 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import com.agenda.domain.Contacto;
-import com.agenda.dao.ContactoDao;
-import com.agenda.dao.impl.ContactoDAOMysqlImpl;
+import com.agenda.domain.Grupo;
+import com.agenda.dao.GrupoDao;
+import com.agenda.dao.impl.GrupoDAOMysqlImpl;
 
 
-@WebServlet("/ListarContacto")
-public class ListarContacto extends HttpServlet {
+@WebServlet("/ListarGrupo")
+public class ListarGrupo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private ContactoDao contactoDao=new ContactoDAOMysqlImpl();
+	private GrupoDao grupoDao=new GrupoDAOMysqlImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			List<Contacto> listado;
+			List<Grupo> listado;
 			
 			try {
-				listado=contactoDao.findAll();
+				listado=grupoDao.findAll();
 				request.setAttribute("listado", listado);
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
-			getServletContext().getRequestDispatcher("/WEB-INF/views/listarContacto.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarGrupo.jsp").forward(request, response);
 		}	
 	}
