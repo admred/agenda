@@ -21,7 +21,7 @@ public class EliminarGrupo extends HttpServlet {
 		
 		try {
 			id=Long.parseLong(request.getParameter("id"));
-			grupoDao.delete(id);
+			grupoDao.delete(grupoDao.getById(id));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

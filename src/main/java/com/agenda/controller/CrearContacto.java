@@ -2,37 +2,30 @@ package com.agenda.controller;
 
 import jakarta.servlet.ServletException;
 
+
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import com.agenda.dao.ContactoDao;
-import com.agenda.dao.impl.ContactoDAOMysqlImpl;
-import com.agenda.dao.GrupoDao;
-import com.agenda.dao.impl.GrupoDAOMysqlImpl;
-import com.agenda.domain.Contacto;
-import com.agenda.domain.Grupo;
+import com.agenda.dao.*;
+import com.agenda.dao.impl.*;
+import com.agenda.domain.*;
 
 @WebServlet("/CrearContacto")
 public class CrearContacto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private ContactoDao contactoDao=new ContactoDAOMysqlImpl();
 	private GrupoDao grupoDao=new GrupoDAOMysqlImpl();
+	
+	private GrupoContactoDao grupoContactoDao=new GrupoContactoDAOMysqlImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Grupo> grupos=null;
-		try {
-			grupos=grupoDao.findAll();
-		} catch (SQLException e) {
-			grupos=new ArrayList<Grupo>();
-		}
-		request.setAttribute("grupos",grupos);
+		request.setAttribute("grupos",grupoDao.findAll());
 		getServletContext().getRequestDispatcher("/WEB-INF/views/crearContacto.jsp").forward(request, response);
 	}
 
@@ -42,22 +35,39 @@ public class CrearContacto extends HttpServlet {
 		String apellido=request.getParameter("apellido");
 		String email=request.getParameter("email");
 		String telefono=request.getParameter("telefono");
+		String[] grupos=request.getParameterValues("grupo[]");
 		
+
 		if(nombre.isBlank()) {
-			throw new ServletException("Nombre es necesario");
+			request.setAttribute("message","Nombre es necesario");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/crearContacto.jsp").forward(request, response);
+			return;
 		}
 		if(apellido.isBlank()) {
-			throw new ServletException("Apellido es necesario");
+			request.setAttribute("message","Apellido es necesario");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/crearContacto.jsp").forward(request, response);
+			return;
 		}
 		if(!email.isBlank() && !email.contains("@")) {
-			throw new ServletException("Email debe tener un @");
+			request.setAttribute("message","Email debe tener un @");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/crearContacto.jsp").forward(request, response);
+			return;
 		}
-			
+		
+		Contacto contacto=new Contacto(nombre,apellido,telefono,email);
+		
+		List<Grupo> listado;
 		try {
-			contactoDao.create(new Contacto(0l,nombre,apellido,telefono,email));
-		} catch (Exception e) {
-			e.printStackTrace();
+			listado=Arrays.asList(grupos).stream()
+				.map(Long::parseLong)
+				.map(grupoDao::getById).toList();
+		}catch(NullPointerException e) {
+			listado=new ArrayList<Grupo>();
 		}
+	
+		grupoContactoDao.updateGroups(contacto,listado);
+	
 		response.sendRedirect("ListarContacto");
+		
 	}
 }

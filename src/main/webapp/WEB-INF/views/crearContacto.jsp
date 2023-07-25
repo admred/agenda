@@ -1,6 +1,11 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List, com.agenda.domain.Grupo"%>
 <!DOCTYPE html>
+<%
+	List<Grupo> grupos=(List<Grupo>)request.getAttribute("grupos");
+%>
+
 <html lang="es">
 
 <head>
@@ -67,9 +72,23 @@
 					<label class="form-label" for="email">Email</label>
 					<input type="email" name="email" class="form-control" autocomplete="off">
 				</div>
-
-				<input type="submit" value="Enviar" class="btn btn-primary">
-				<a href="#" onclick="history.back()" role="button" class="btn btn-secondary">Volver</a>
+				
+				<div class="mb-3">			
+					<label class="form-label">Grupo</label>
+							
+					<div class="container-fluid gx-3">
+					<% for(Grupo g: grupos) { %>
+						<div class="form-check form-check-inline">
+							<input type="checkbox" name="grupo[]" value="<%=g.getId()%>" class="form-check-input" id="<%=g.getNombre()%>">
+							<label class="form-check-label" for="<%=g.getNombre()%>"><%=g.getNombre()%></label>
+						</div>
+					<% } %>
+					</div>
+				</div>
+				<div class="input-group justify-content-center mt-3">
+					<a href="#" onclick="history.back()" role="button" class="btn btn-secondary">Volver</a>
+					<input type="submit" value="Enviar" class="btn btn-primary">
+				</div>
 			</form>
 		</div>
 	</main>

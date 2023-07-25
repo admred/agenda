@@ -17,7 +17,7 @@ public class CrearGrupo extends HttpServlet {
 	private GrupoDao grupoDao=new GrupoDAOMysqlImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/crearGrupo.jsp").forward(request, response);
 	}
 
@@ -29,12 +29,9 @@ public class CrearGrupo extends HttpServlet {
 		if(nombre.isBlank()) {
 			throw new ServletException("Nombre es necesario");
 		}
-			
-		try {
-			grupoDao.create(new Grupo(0l,nombre,descripcion));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+		grupoDao.create(new Grupo(nombre,descripcion));
+		
 		response.sendRedirect("ListarGrupo");
 	}
 }

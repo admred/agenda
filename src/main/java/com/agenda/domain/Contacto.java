@@ -11,8 +11,14 @@ public class Contacto implements java.io.Serializable {
 	private String email;
 	
 	/* Contructores */
-	public Contacto() {
-		this(0l,"","","","");
+	public Contacto() {}
+	
+	public Contacto(String nombre, String apellido, String telefono, String email) {
+		this.id=0l;
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.telefono=telefono;
+		this.email=email;
 	}
 	
 	public Contacto(Long id,String nombre, String apellido, String telefono, String email) {
@@ -23,6 +29,9 @@ public class Contacto implements java.io.Serializable {
 		this.email=email;
 	}
 	
+	public void setId(Long id) {
+		this.id=id;
+	}
 	public Long getId() {
 		return id;
 	}

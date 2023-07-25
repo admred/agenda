@@ -6,56 +6,102 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
-import com.agenda.dao.ContactoDao;
-import com.agenda.dao.impl.ContactoDAOMysqlImpl;
-import com.agenda.domain.Contacto;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.agenda.dao.*;
+import com.agenda.dao.impl.*;
+import com.agenda.domain.*;
 
 @WebServlet("/ActualizarContacto")
 public class ActualizarContacto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private ContactoDao contactoDao=new ContactoDAOMysqlImpl();
-
+	
+	private GrupoDao grupoDao=new GrupoDAOMysqlImpl();
+	
+	private GrupoContactoDao grupoContactoDao=new GrupoContactoDAOMysqlImpl();
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		final Long id=Long.parseLong(request.getParameter("id"));
+		Long id=0l;
 		Contacto contacto=null;
+		List<Grupo> grupos=null;
+		List<Grupo> checked=null;
 		
 		try {
-			contacto=contactoDao.getById(id);
-			request.setAttribute("contacto", contacto);
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			getServletContext().getRequestDispatcher("/WEB-INF/views/error404.html").forward(request, response);
+			id=Long.valueOf(request.getParameter("id"));
+		}catch(NumberFormatException e) {
+			request.setAttribute("messages","id no valido");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarContacto.jsp").forward(request, response);
 			return;
-		}	
+		}
+		
+		grupos=grupoDao.findAll();
+		request.setAttribute("grupos",grupos);
+		
+		checked=grupoContactoDao.hasGroup(contactoDao.getById(id));
+		request.setAttribute("checked",checked);
+		
+		contacto=contactoDao.getById(id);
+		if(contacto == null) {
+			request.setAttribute("messages","Contacto no encontrado");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarContacto.jsp").forward(request, response);
+			return;
+		}
+		request.setAttribute("contacto", contacto);
+			
 		getServletContext().getRequestDispatcher("/WEB-INF/views/actualizarContacto.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Long id=null;
+		Contacto contacto=null;
+		String[] grupos=request.getParameterValues("grupo[]");
 		String nombre=request.getParameter("nombre");
 		String apellido=request.getParameter("apellido");
 		String email=request.getParameter("email");
 		String telefono=request.getParameter("telefono");
+
 		
 		if(nombre.isBlank()) {
-			throw new ServletException("Nombre es necesario");
+			request.setAttribute("message","Nombre es necesario");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/actualizarContacto.jsp").forward(request, response);
+			return;
 		}
 		if(apellido.isBlank()) {
-			throw new ServletException("Apellido es necesario");
+			request.setAttribute("message","Apellido es necesario");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/actualizarContacto.jsp").forward(request, response);
+			return;
 		}
 		if(!email.isBlank() && !email.contains("@")) {
-			throw new ServletException("Email debe tener un @");
+			request.setAttribute("message","Email debe tener un @");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/actualizarContacto.jsp").forward(request, response);
+			return;
 		}
 		
-		try {
-			id=Long.parseLong((String)request.getAttribute("id"));
-			contactoDao.update(new Contacto(id,nombre,apellido,telefono,email));	
-		} catch (NumberFormatException | SQLException e) {
-			e.printStackTrace();
+		try {	
+			id=Long.parseLong(request.getParameter("id"));
+			contacto=new Contacto(id,nombre,apellido,telefono,email);
+			contactoDao.update(contacto);
+		} catch (Exception e) {
+			request.setAttribute("messages","id no valido");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarContacto.jsp").forward(request, response);
+			return;
 		}
+		List<Grupo> listado;
+		try {
+			listado=Arrays.asList(grupos).stream()
+					.map(Long::parseLong)
+					.map(grupoDao::getById).toList();
+		}catch(NullPointerException e) {
+			listado=new ArrayList<Grupo>();
+		}
+		
+		grupoContactoDao.updateGroups(contacto,listado);
+		
 		response.sendRedirect("ListarContacto");
 	}
 }

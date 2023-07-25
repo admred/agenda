@@ -6,7 +6,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import com.agenda.dao.GrupoDao;
 import com.agenda.dao.impl.GrupoDAOMysqlImpl;
 import com.agenda.domain.Grupo;
@@ -19,31 +18,43 @@ public class ActualizarGrupo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		final Long id=Long.parseLong(request.getParameter("id"));
+		final Long id;
 		Grupo grupo=null;
 		
-		try {
-			grupo=grupoDao.getById(id);
-			request.setAttribute("grupo", grupo);
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			getServletContext().getRequestDispatcher("/WEB-INF/views/error404.html").forward(request, response);
+		try {	
+			id=Long.parseLong(request.getParameter("id"));
+		} catch (Exception e) {
+			request.setAttribute("messages","id no valido");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarGrupo.jsp").forward(request, response);
 			return;
-		}	
+		}
+		
+		grupo=grupoDao.getById(id);
+		request.setAttribute("grupo", grupo);
+		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/actualizarGrupo.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		try {
-			grupoDao.update(new Grupo(
-					Long.parseLong(request.getParameter("id")),
-					(String) request.getParameter("nombre"),
-					(String) request.getParameter("descripcion")
-				));
-		} catch (NumberFormatException | SQLException e) {
-			e.printStackTrace();
+		Long id;
+		try {	
+			id=Long.parseLong(request.getParameter("id"));
+		} catch (Exception e) {
+			request.setAttribute("messages","id no valido");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarGrupo.jsp").forward(request, response);
+			return;
 		}
+		
+		String nombre=request.getParameter("nombre");
+		String descr=request.getParameter("descripcion");
+		
+		if(nombre.isBlank()) {
+			request.setAttribute("messages","nombre no puede ser vacio");
+			getServletContext().getRequestDispatcher("/WEB-INF/views/listarGrupo.jsp").forward(request, response);
+			return;
+		}
+		grupoDao.update(new Grupo(id,nombre,descr));
+		
 		response.sendRedirect("ListarGrupo");
 	}
 }

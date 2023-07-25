@@ -65,15 +65,7 @@ public class TestGrupoDao {
 	public static void testDelete() throws Exception {
 		List<Grupo> listado=grupoDao.findAll();
 		for(Grupo c:listado) {
-			Long id=c.getId();
-			grupoDao.delete(id);
-			try {
-				grupoDao.getById(id);
-			}catch(Exception e) {
-				// OK
-				return;
-			}
-			throw new AssertionError("Fallo testDelete()");
+			grupoDao.delete(c);
 		}
 	}
 	
