@@ -2,7 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
-
+<%
+	String cantidadContactos=(String)request.getAttribute("cantidadContactos");
+	String cantidadGrupos=(String)request.getAttribute("cantidadGrupos");
+%>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,27 +40,30 @@
 	</div>
 
 	<main>
-		<div class="container text-center mt-5">
+		<div class="container mt-3">
 			<div class="row justify-content-evenly">
-				
-				<div class="card mt-3" style="width: 20rem;">
-					<img src="<%=request.getContextPath()%>/resources/contact-book.png" class="card-img-top">
-					<div class="card-body">
- 							<h5 class="card-title">Contacto</h5>
- 							<p class="card-text">Datos de sobres contactos, el nombre, apellido, telefono y email.</p>
- 							<a href="<%=request.getContextPath()%>/ListarContacto" class="btn btn-primary">Listado</a>
- 							<a href="<%=request.getContextPath()%>/CrearContacto" class="btn btn-success">Crear</a>
-					</div>
+				<div class="col-sm-3 ">
+						<div class="card mt-3" style="">
+							<div class="card-header">Contactos</div>
+							<p class="text-center fs-1 mt-5"><%=cantidadContactos%></p>
+							<div class="card-body">
+		 							<p class="card-text">Datos de sobres contactos, el nombre, apellido, telefono y email.</p>
+		 							<a href="<%=request.getContextPath()%>/ListarContacto" class="btn btn-primary">Listado</a>
+		 							<a href="<%=request.getContextPath()%>/CrearContacto" class="btn btn-success">Crear</a>
+							</div>
+						</div>
 				</div>
-				<div class="card mt-3" style="width: 20rem;">
-					<img src="<%=request.getContextPath()%>/resources/people.png" class="card-img-top">
-					<div class="card-body">
- 							<h5 class="card-title">Grupo</h5>
- 							<p class="card-text">Agrupamiento de contactos, ej: familia, estudio, trabajo, etc</p>
- 							<a href="<%=request.getContextPath()%>/ListarGrupo" class="btn btn-primary">Listado</a>
- 							<a href="<%=request.getContextPath()%>/CrearGrupo" class="btn btn-success">Crear</a>
-					</div>
-				</div>	
+				<div class="col-sm-3 ">
+						<div class="card mt-3" style="">
+							<div class="card-header">Grupos</div>
+							<p class="text-center fs-1 mt-5"><%=cantidadGrupos%></p>
+							<div class="card-body">
+		 							<p class="card-text">Agrupamiento de contactos, ej: familia, estudio, trabajo, etc</p>
+									<a href="<%=request.getContextPath()%>/ListarGrupo" class="btn btn-primary">Listado</a>
+									<a href="<%=request.getContextPath()%>/CrearGrupo" class="btn btn-success">Crear</a>
+							</div>
+						</div>
+				</div>
 			</div>
 		</div>
 	</main>

@@ -1,7 +1,6 @@
 package com.agenda.dao;
 
 import java.util.List;
-import java.sql.SQLException;
 import com.agenda.domain.*;
 
 public interface GrupoContactoDao {
