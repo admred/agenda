@@ -52,7 +52,7 @@
 
 	<main>
 		<div class="container bg-light mt-5">
-			<h3>Listado de contactos</h3>
+			<h3 class="text-center">Listado de contactos</h3>
 <%
 	if( listado != null && listado.size() > 0 ) { 
 %>		

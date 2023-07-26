@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://unpkg.com/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-	<title>Home</title>
+	<title>Inicio</title>
 </head>
 
 <body>
@@ -37,11 +37,27 @@
 	</div>
 
 	<main>
-		<div class="container text-center">
-			<div class="row">
-				<div class="col">
-					
+		<div class="container text-center mt-5">
+			<div class="row justify-content-evenly">
+				
+				<div class="card mt-3" style="width: 20rem;">
+					<img src="<%=request.getContextPath()%>/resources/contact-book.png" class="card-img-top">
+					<div class="card-body">
+ 							<h5 class="card-title">Contacto</h5>
+ 							<p class="card-text">Datos de sobres contactos, el nombre, apellido, telefono y email.</p>
+ 							<a href="<%=request.getContextPath()%>/ListarContacto" class="btn btn-primary">Listado</a>
+ 							<a href="<%=request.getContextPath()%>/CrearContacto" class="btn btn-success">Crear</a>
+					</div>
 				</div>
+				<div class="card mt-3" style="width: 20rem;">
+					<img src="<%=request.getContextPath()%>/resources/people.png" class="card-img-top">
+					<div class="card-body">
+ 							<h5 class="card-title">Grupo</h5>
+ 							<p class="card-text">Agrupamiento de contactos, ej: familia, estudio, trabajo, etc</p>
+ 							<a href="<%=request.getContextPath()%>/ListarGrupo" class="btn btn-primary">Listado</a>
+ 							<a href="<%=request.getContextPath()%>/CrearGrupo" class="btn btn-success">Crear</a>
+					</div>
+				</div>	
 			</div>
 		</div>
 	</main>

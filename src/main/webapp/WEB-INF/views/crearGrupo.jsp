@@ -46,6 +46,7 @@
 
 	<main>
 		<div class="container bg-light mt-5">		
+			<h3 class="text-center">Crear grupo</h3>
 			<form action="<%=request.getContextPath()%>/CrearGrupo" method="POST">
 
 				<div class="mb-3">

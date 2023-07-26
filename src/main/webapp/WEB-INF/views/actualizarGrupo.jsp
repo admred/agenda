@@ -17,7 +17,7 @@
 
 <body>
 	<div class="container bg-ligth">
-	
+		
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="<%=request.getContextPath()%>">Agenda</a>
@@ -52,7 +52,7 @@
 
 	<main>
 		<div class="container bg-light mt-5">
-			<h3>Actualizar grupo</h3>
+			<h3 class="text-center">Actualizar grupo</h3>
 			<form action="<%=request.getContextPath()%>/ActualizarGrupo" method="POST">
 				<input type="hidden" name="id" value="<%=grupo.getId()%>">
 				<div class="mb-3">

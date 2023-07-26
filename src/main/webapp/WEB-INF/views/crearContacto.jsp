@@ -50,7 +50,8 @@
 	</div>
 
 	<main>
-		<div class="container bg-light mt-5">		
+		<div class="container bg-light mt-5">
+			<h3 class="text-center">Crear contacto</h3>
 			<form action="<%=request.getContextPath()%>/CrearContacto" method="POST">
 
 				<div class="mb-3">
@@ -72,7 +73,7 @@
 					<label class="form-label" for="email">Email</label>
 					<input type="email" name="email" class="form-control" autocomplete="off">
 				</div>
-				
+<% if ( grupos != null && grupos.size() > 0 ) { %>
 				<div class="mb-3">			
 					<label class="form-label">Grupo</label>
 							
@@ -85,6 +86,7 @@
 					<% } %>
 					</div>
 				</div>
+<% } %>
 				<div class="input-group justify-content-center mt-3">
 					<a href="#" onclick="history.back()" role="button" class="btn btn-secondary">Volver</a>
 					<input type="submit" value="Enviar" class="btn btn-primary">

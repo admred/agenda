@@ -38,10 +38,11 @@
 						<li class="nav-item">
 							<a class="nav-link" href="<%=request.getContextPath()%>/CrearContacto">Crear</a>
 						</li>
-
+						
 					</ul>
 					<div class="d-flex w-75 justify-content-end">
-						<form class="d-flex" action="<%=request.getContextPath()%>/BuscarContacto" method="GET">
+						
+						<form class="d-flex" action="<%=request.getContextPath()%>/BuscarContacto" method="GET" role="search">
 							<input name="keyword" class="form-control me-2" type="search" placeholder="Buscar Contacto"
 								autocomplete="off">
 							<button class="btn btn-outline-success" type="submit">Buscar</button>
@@ -54,7 +55,7 @@
 
 	<main>
 		<div class="container bg-light mt-5">
-			<h3>Actualizar contacto</h3>
+			<h3 class="text-center">Actualizar contacto</h3>
 			<form action="<%=request.getContextPath()%>/ActualizarContacto" method="POST">
 				<input type="hidden" name="id" value="<%=contacto.getId()%>">
 				<div class="mb-3">
@@ -76,7 +77,7 @@
 					<label class="form-label" for="email">Email</label>
 					<input type="email" name="email" class="form-control" value="<%=contacto.getEmail()%>">
 				</div>
-				
+<% if ( grupos != null && grupos.size() > 0 ) { %>
 				<div class="mb-3">			
 					<label class="form-label">Grupo</label>
 							
@@ -97,6 +98,7 @@
 					<% } %>
 					</div>
 				</div>
+<% } %>
 				<div class="input-group justify-content-center mt-3">
 					<a href="#" onclick="history.back()" role="button" class="btn btn-secondary">Volver</a>
 					<input type="submit" value="Enviar" class="btn btn-primary">

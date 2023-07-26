@@ -22,6 +22,8 @@ public class CrearContacto extends HttpServlet {
 	
 	private GrupoDao grupoDao=new GrupoDAOMysqlImpl();
 	
+	private ContactoDao contactoDao=new ContactoDAOMysqlImpl();
+	
 	private GrupoContactoDao grupoContactoDao=new GrupoContactoDAOMysqlImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,6 +57,7 @@ public class CrearContacto extends HttpServlet {
 		}
 		
 		Contacto contacto=new Contacto(nombre,apellido,telefono,email);
+		contactoDao.create(contacto);
 		
 		List<Grupo> listado;
 		try {
@@ -64,10 +67,10 @@ public class CrearContacto extends HttpServlet {
 		}catch(NullPointerException e) {
 			listado=new ArrayList<Grupo>();
 		}
-	
-		grupoContactoDao.updateGroups(contacto,listado);
+		if(grupos != null && grupos.length > 0 ) {
+			grupoContactoDao.updateGroups(contacto,listado);
+		}
 	
 		response.sendRedirect("ListarContacto");
-		
 	}
 }

@@ -18,7 +18,7 @@ public class ActualizarGrupo extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		final Long id;
+		Long id;
 		Grupo grupo=null;
 		
 		try {	
