@@ -30,12 +30,8 @@ Esto es un CRUD de una Agenda de Contactos del curso fullstack java de __Codo a 
 - Buscar un contacto
 - Listar contactos
 
-### Falta:
-- Programar __Grupos__
-- Detalles menores
-
 ### Captura
 
 <p align="center">
-  <img src="https://repository-images.githubusercontent.com/666574814/276e56cd-d902-4b6e-aa1c-f7cc1d713260" alt="Vista del programa">
+  <img src="https://repository-images.githubusercontent.com/666574814/9fa52d25-e4df-47eb-bd61-974ec354f6ab" alt="Video demo">
 </p>
