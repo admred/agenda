@@ -14,14 +14,10 @@ public class TestGrupoContactoDao {
 	static GrupoDao grupoDao= new GrupoDAOMysqlImpl();
 	
 	public static void main(String[] args) throws Exception {
-		List<Contacto> contactos=contactoDao.findAll();
-		if(contactos.size() == 0) {
-			TestContactoDao.testCreate();
-		}
-		List<Grupo> grupos=grupoDao.findAll();
-		if(grupos.size() == 0) {
-			TestGrupoDao.testCreate();
-		}
+		TestContactoDao.testDelete();
+		TestContactoDao.testCreate();
+		TestGrupoDao.testDelete();
+		TestGrupoDao.testCreate();
 		
 		testCreate();
 		testUnsetAll();

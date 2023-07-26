@@ -75,17 +75,19 @@
 							<td><%=contacto.getApellido()%></td>
 							<td><%=contacto.getTelefono()%></td>
 							<td><%=contacto.getEmail()%></td>
-							<td>
+							<td>								
 								<div class="btn-group btn-group-sm" role="group" aria-label="Acciones">
 									<a class="btn btn-info" 
 							      	   role="button" 
 							      	   href="<%=request.getContextPath()%>/ActualizarContacto?id=<%=contacto.getId()%>">
 							      	   Editar
 							      	</a>
-									<a class="btn btn-danger"
-										role="button"  
-										href="<%=request.getContextPath()%>/EliminarContacto?id=<%=contacto.getId()%>">
-									  Eliminar
+									<a
+										role="button" 
+										class="btn btn-danger" 
+										href="<%=request.getContextPath()%>/EliminarContacto?id=<%=contacto.getId()%>"
+										onclick="return confirm();">											
+								  		Eliminar
 									</a>
 								</div>
 							</td>
