@@ -25,7 +25,7 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="<%=request.getContextPath()%>">Inicio</a>
+							<a class="nav-link active" href="<%=request.getContextPath()%>">Inicio</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="<%=request.getContextPath()%>/ListarContacto">Contactos</a>

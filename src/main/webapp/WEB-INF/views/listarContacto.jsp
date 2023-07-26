@@ -86,7 +86,7 @@
 										role="button" 
 										class="btn btn-danger" 
 										href="<%=request.getContextPath()%>/EliminarContacto?id=<%=contacto.getId()%>"
-										onclick="return confirm();">											
+										onclick="return confirm('Esta seguro que desea eliminar Id=<%=contacto.getId()%> ?');">											
 								  		Eliminar
 									</a>
 								</div>

@@ -80,7 +80,8 @@
 							      	</a>
 									<a class="btn btn-danger"
 										role="button"  
-										href="<%=request.getContextPath()%>/EliminarGrupo?id=<%=grupo.getId()%>">
+										href="<%=request.getContextPath()%>/EliminarGrupo?id=<%=grupo.getId()%>"
+										onclick="return confirm('Esta seguro que desea eliminar Id=<%=grupo.getId()%> ?');">
 									  Eliminar
 									</a>
 								</div>
